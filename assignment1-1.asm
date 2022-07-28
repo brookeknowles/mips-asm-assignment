@@ -29,7 +29,7 @@
 				j nextIndex 		# get the next index (array1[i+1])
 
 			incrementCounter:
-			# Increments the loop counter by 1
+			# Increments the negative number counter by 1
 				addi $t2, $t2, 1 	# increase counter by one
 				j nextIndex 		# get the next index (array1[i+1])
 
