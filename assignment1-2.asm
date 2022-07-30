@@ -18,8 +18,6 @@
 		ori $t2, $0, 201 		# store max length of input string in t2 register
 		ori $t3, $0, 198        # store (length of input string - length of "the") in t3 register
 		ori $t4, $0, 0 			# initalise i to 0 and store in t4 register
-		ori $t5, $0, 0 			# initalise j to 0 and store in t5 register	
-		ori $t6, $0, 0 			# initalise j to 0 and store in t6 register	
 
 		# Print the prompt message to SPIM console  
 		ori $v0, $0, 4 			# system call code for printing a string
@@ -38,26 +36,28 @@
 		syscall
 
 		outer_loop:
-			# Outer loop of the nested loops (the i part)
-			# Loop through the characters of input string. If str[i] == 't', then go into middle loop 
-
+			beq $t2, $t4, end 	# if i == 201, end the loop because string is over
+		    lb $a1, 0($a0)       		# get first char of string and load into a1 register
+			li $a2,'t'					# load 't' into the a2 register (PSEUDOINSTRUCTION PLS CHANGE)
+			beq $a1, $a1, middle_loop	# if the first char == t, go to middle loop
+			
+			j next_i_index # no t found, get the next i index of the loop 
+			 
 		middle_loop:
-			# Middle loop of the nested loops (the j part)
-			# Loop through characters of input string. If str[j] == 'h', then go to inner loop
+			addu $a0, $a0, 1			# get next character in string by adding 1 to a0
+			lb $a1, 0($a0)       		# load next character into a1 register
+			li $a2,'h'					# load 'h' into the a2 register
+			beq $a1, $a1, inner_loop	# if the char == h, go to inner loop
+			
+			j next_i_index # no h found, get the next i index of the loop and go back into outer loop
 
 		inner_loop:
-			# Innermost loop of the nested loops (the k part)
-			# Loop through characters of input string. If str[k] == 'e', then "the" word found so increase counter
+			addu $a0, $a0, 1				# get next character in string by adding 1 to a0
+			lb $a1, 0($a0)       			# load next character into a1 register
+			li $a2,'e'						# load 'e' into the a2 register
+			beq $a1, $a1, incrementCounter	# if the char == h, then 'the' has been found, so increase counter
 		
-		exit_inner:
-			# exit out of the inner loop
-
-		exit_middle:
-			# exit out of middle loop
-			
-		exit_outer:
-			# exit out of the outer loop
-			j Exit
+			j next_i_index # no e found, get the next i index of the loop and go back into outer loop
 
 		next_i_index:
 			# Gets the next character of the string (for the i loop)
