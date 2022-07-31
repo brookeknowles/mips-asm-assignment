@@ -66,7 +66,7 @@
 	Exit:
 		# For some reason count is always 1 higher than it should be, so decrease by 1 before printing to screen
 		ori $t3, $0, 1 		# put 1 in t3 register
-		beq $t0, $0, Print	# testing 
+		beq $t0, $0, Print	# if t0 (counter) == 0, then dont subtract, go to print
 		sub $t0, $t0, $t3 	# subtract 1 from the counter and put back in same t0 register
 
 		j Print
