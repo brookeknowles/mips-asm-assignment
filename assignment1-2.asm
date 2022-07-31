@@ -5,7 +5,7 @@
 	prompt1:	.asciiz		"Enter a string of characters: "
 	prompt2:	.asciiz		"\n ... number of word 'the' in the string is: "
 	# reserve a buffer to store up to 200 characters for the input string 
-				# (plus one for 0 at the end of the string)
+	# (plus one for 0 at the end of the string)
 	str_buf: 	.space		201  
 	substring_the: .asciiz "the"
 
@@ -55,7 +55,7 @@
 	next_i_index:
 		# Gets the next character of the string (for the i loop)
 		addi $t2, $t2, 1 	# increase i by one (i++)
-		addu $a0, $a0, 1			# get next character in string by adding 1 to a0
+		addu $a0, $a0, 1	# get next character in string by adding 1 to a0
 		j outer_loop 		# go back to the loop after we got the next index
 
 	incrementCounter:
@@ -66,8 +66,12 @@
 	Exit:
 		# For some reason count is always 1 higher than it should be, so decrease by 1 before printing to screen
 		ori $t3, $0, 1 		# put 1 in t3 register
+		beq $t0, $0, Print	# testing 
 		sub $t0, $t0, $t3 	# subtract 1 from the counter and put back in same t0 register
 
+		j Print
+
+	Print:
 		# Prints the result on SPIM Console
 		ori $v0, $0, 4 		# system call code for printing a string
 		la $a0, prompt2 	# print the message from prompt2
