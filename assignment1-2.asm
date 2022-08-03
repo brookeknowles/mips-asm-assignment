@@ -19,7 +19,7 @@
 
 		# Print the prompt message to SPIM console  
 		ori $v0, $0, 4 			# system call code for printing a string
-		la $a0, prompt1 		# print the message from str1
+		la $a0, prompt1 		# print the message from prompt1
 		syscall
 
 		# User can enter the string from keyboard
