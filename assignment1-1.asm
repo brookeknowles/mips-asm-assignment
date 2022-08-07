@@ -15,10 +15,10 @@
 			
 	main:	
 			# Initalize registers with variables/constants 
-			ori $t0, $0, 40 	# store number of iterations in t0 register (size of array = 40)
-			ori $t1, $0, 0 		# initalise loop index to i = 0 & store in t1 register
-			ori $t2, $0, 0 		# initalise negative number counter to 0 and store in t2 register
-			la $t3, array1 		# t3 register will store memory address of array1[i]. this line initalises with array1[0]
+			ori $t0, $0, 40 		# store number of iterations in t0 register (size of array = 40)
+			ori $t1, $0, 0 			# initalise loop index to i = 0 & store in t1 register
+			ori $t2, $0, 0 			# initalise negative number counter to 0 and store in t2 register
+			la $t3, array1 			# t3 register will store memory address of array1[i]. this line initalises with array1[0]
 
 			loop:
 			# Loops through the array

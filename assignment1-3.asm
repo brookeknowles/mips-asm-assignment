@@ -33,30 +33,30 @@
 		beq $s1, $0, nIsZero
 
 		# n = 1 so just print the 1 not loop
-		addi $t1, $0, 1				# initalise t1 register to 1
+		ori $t1, $0, 1				# initalise t1 register to 1
 		beq $s1, $t1, nIsOne
 
 		j loopN 					# n > 1 so go to loop
 		
 	nIsZero:
 		# print zero
-		add $a0, $0, 0				# store 0 in a0 register
-		addi $v0, $0, 1	 			# system call code for printing an integer
+		ori $a0, $0, 0				# store 0 in a0 register
+		ori $v0, $0, 1	 			# system call code for printing an integer
 		syscall
 
 		j exitMain
 
 	nIsOne:
 		# print 1
-		add $a0, $0, 1				# store 1 in a0 register
-		addi $v0, $0, 1	 			# system call code for printing an integer
+		ori $a0, $0, 1				# store 1 in a0 register
+		ori $v0, $0, 1	 			# system call code for printing an integer
 		syscall
 
 		j exitMain
 
 	exitMain:
 		# Exit to SPIM 
-		addi	$v0, $0, 10			# system call code for  exit 
+		ori	$v0, $0, 10			# system call code for  exit 
 		syscall						# exit: end of the program execution?
 
 	loopN:
@@ -66,11 +66,11 @@
 
 		# print the resulting number
 		add $a0, $0, $v0			# fibonacci function saves result in v0 register, move to a0
-		addi $v0, $0, 1	 			# system call code for printing an integer
+		ori $v0, $0, 1	 			# system call code for printing an integer
 		syscall
 
 		# print print the comma and space between 2 numbers
-		addi $v0, $0, 4				# system call code for printing a string
+		ori $v0, $0, 4				# system call code for printing a string
 		la $a0, str2 				# print the message from str2
 		syscall
 
@@ -88,7 +88,7 @@
 		sw $s1, 8($sp)				# save s1 register in the stack frame
 
 		add $s0, $0, $a0			# put n into the s0 register
-		addi $t1, $0, 1				# initalise t1 register to 1 so can compare later
+		ori $t1, $0, 1				# initalise t1 register to 1 so can compare later
 
 		beq $s0, $0, returnZero		# if n == 0, go to returnZero
 		beq $s0, $t1, returnOne 	# if n == 1, go to returnOne
