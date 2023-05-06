@@ -20,4 +20,5 @@ Using function **fibonacci(n)**, the sequence of numbers 1,1,2,3,5,8,13,21,... f
     fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)    for n > 2
     
 a. Write the MIPS assembly code for function fibonacci.
+
 b. Write the main program, which reads the value of **n** from keyboard (n < 12) and prints the Fibonacci numbers up to the calculated value of **n** on SPIM console. For example, if **n** is 10, then the following sequence will be printed: 1,1,2,3,5,8,13,21,34
