@@ -1,4 +1,4 @@
-# CS304_A1
+# mips-asm-assignment
 
 This was an assignment for a computer architecture course I took in university. Each file contains the MIPS assembly code for the following tasks:
 
